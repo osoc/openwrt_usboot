@@ -31,8 +31,8 @@ while true; do
 		sleep 10
 		kill -9 $TR_PID
 
-		sed -n 's/.*=//'p /proc/cmdline > /tmp/uuid
-		blkid | grep $(cat /tmp/uuid) > /tmp/mountdev
-		echo -e "\033[31m \033[01m Your openWRT device is $(cat /tmp/mountdev | cut -d ':' -f 1) \033[0m"
-		mount $(cat /tmp/mountdev | cut -d ':' -f 1) /root
-		exec switch_root /root /etc/preinit
+sed -n 's/.*=//'p /proc/cmdline > /tmp/uuid
+blkid | grep $(cat /tmp/uuid) > /tmp/mountdev
+echo -e "\033[31m \033[01m Your openWRT device is $(cat /tmp/mountdev | cut -d ':' -f 1) \033[0m"
+mount $(cat /tmp/mountdev | cut -d ':' -f 1) /root
+exec switch_root /root /etc/preinit
